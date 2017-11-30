@@ -1,23 +1,18 @@
-<div>
-  <h2><%= project.name %></h2>
-  <div class="standard-flex">
-    <div id="project-description" class="large-container">
-      <div><%= project.description %></div>
+<h2><%= project.name %></h2> <!-- project title -->
+<div> <!-- project details sans title container -->
+  <div> <!-- project description -->
+    <div><%= project.description %></div>
+  </div>
+  <div> <!-- project sidebar container -->
+    <div> <!-- project sidebar actions -->
+      <!-- settings button -->
     </div>
-    <div class="large-container">
+    <div> <!-- project sidebar details -->
       <div>By: <%= project.user.full_name %></div>
       <div>Status: <%= project.status %></div>
       <div>Estimated Level of effort: <strong><%= project.estimated_level_of_effort %></strong></div>
       <% if project.status == "completed" %>
         <div>Actual Level of effort: <strong><%= project.actual_level_of_effort %></strong></div>
-      <% end %>
-      
-      <div><%= link_to "Back", root_path %></div>
-      <% if policy(project).edit? %>
-        <div><%= link_to "Edit Project", edit_project_path(project) %></div>
-      <% end %>
-      <% if policy(project).destroy? %>
-        <div><%= link_to "Delete Project", project_path(project), method: :delete %></div>
       <% end %>
     </div>
   </div>
