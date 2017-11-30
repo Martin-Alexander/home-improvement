@@ -1,4 +1,6 @@
 #project-details-container {
+  @include standard-border;
+  @include medium-padding;
   
   // Bootstrap container
   & > div {
