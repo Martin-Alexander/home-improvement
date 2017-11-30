@@ -1,5 +1,7 @@
 .project-comment {
   @include standard-border;
+  @include light-spacing;
+  @include medium-padding;
 
   // Div containing comment author and number of likes
   &> div:first-child {
@@ -7,4 +9,6 @@
       display: inline;
     }
   }
+
+  margin-top: 8px;
 }
