@@ -1,0 +1,7 @@
+.project-comment {
+  &> div:first-child {
+    &> div {
+      display: inline;
+    }
+  }
+}
