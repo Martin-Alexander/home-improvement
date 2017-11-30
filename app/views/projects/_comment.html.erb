@@ -1,0 +1,6 @@
+<div class="large-container">
+  <div><strong><%= comment.user.full_name %></strong></div>
+  <div>Likes: <strong><%= comment.number_of_likes %></strong></div>
+  <div><%= comment.content %></div>
+  <%= render partial: "reply", collection: comment.replies %>
+</div>

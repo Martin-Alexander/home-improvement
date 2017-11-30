@@ -1,0 +1,22 @@
+<% if current_user %>
+  <div><%= link_to "Sign out", destroy_user_session_path, method: :delete %></div>
+<% else %>
+  <div><%= link_to "Sign in", new_user_session_path %></div>
+  <div><%= link_to "Sign up", new_user_registration_path %></div>
+<% end %>
+<div><%= link_to "New Project", new_project_path %></div>
+
+<div id="react-entry"></div>
+
+<% @projects.each do |project| %>
+  <h2><%= link_to project.name, project_path(project) %></h2>
+  <div>By: <%= project.user.full_name %></div>
+  <div><%= project.description %></div>
+  <div>Status: <%= project.status %></div>
+  <div>Estimated Level of effort: <strong><%= project.estimated_level_of_effort %></strong></div>
+  <% if project.status == "completed" %>
+    <div>Actual Level of effort: <strong><%= project.actual_level_of_effort %></strong></div>
+  <% end %>
+<% end %>
+
+<%= javascript_pack_tag "application" %>
