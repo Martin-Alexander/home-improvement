@@ -1,19 +1,21 @@
 <h2><%= project.name %></h2> <!-- project title -->
-<div> <!-- project details sans title container -->
-  <div> <!-- project description -->
-    <div><%= project.description %></div>
-  </div>
-  <div> <!-- project sidebar container -->
-    <div> <!-- project sidebar actions -->
-      <!-- settings button -->
+<div class="container">  <!-- project details sans title container -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-9"> <!-- project description -->
+      <%= project.description %>
     </div>
-    <div> <!-- project sidebar details -->
-      <div>By: <%= project.user.full_name %></div>
-      <div>Status: <%= project.status %></div>
-      <div>Estimated Level of effort: <strong><%= project.estimated_level_of_effort %></strong></div>
-      <% if project.status == "completed" %>
-        <div>Actual Level of effort: <strong><%= project.actual_level_of_effort %></strong></div>
-      <% end %>
+    <div class="col-xs-12 col-sm-2"> <!-- project sidebar container -->
+      <div> <!-- project sidebar actions -->
+        Settings
+      </div>
+      <div> <!-- project sidebar details -->
+        <div>By: <%= project.user.full_name %></div>
+        <div>Status: <%= project.status %></div>
+        <div>Estimated Level of effort: <strong><%= project.estimated_level_of_effort %></strong></div>
+        <% if project.status == "completed" %>
+          <div>Actual Level of effort: <strong><%= project.actual_level_of_effort %></strong></div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
