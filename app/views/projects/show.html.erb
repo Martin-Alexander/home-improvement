@@ -1,13 +1,11 @@
-<div id="main-wrapper">
-  <div>
-    <div class="large-container">
-      <%= render "project", project: @project %>
-    </div>
-    <div class="large-container">
-      <h3>Comments</h3>
-      <span>New</span> <span>Top</span> <span>Active</span>
-      <%= render partial: "comment", collection: @comments %>
-    </div>
+<div> <!-- main project container -->
+  <div> <!-- project details container -->
+    <%= render "project", project: @project %>
+  </div>
+  <div> <!-- project comments container -->
+    <h3>Comments</h3>
+    <span>New</span> <span>Top</span> <span>Active</span>
+    <%= render partial: "comment", collection: @comments %>
   </div>
 </div>
 
