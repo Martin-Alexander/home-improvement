@@ -1,4 +1,5 @@
 .project-comment {
+  @include standard-border;
 
   // Div containing comment author and number of likes
   &> div:first-child {
