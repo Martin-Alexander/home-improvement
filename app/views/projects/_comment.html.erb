@@ -1,8 +1,4 @@
 <div class="project-comment">
-  <div>
-    <div><strong><%= comment.user.full_name %></strong></div>
-    <div><strong><%= comment.number_of_likes %></strong><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
-  </div>
-  <div><%= comment.content %></div>
+  <%= render "comment_content_base", comment: comment %>
   <%= render partial: "reply", collection: comment.replies %>
 </div>
