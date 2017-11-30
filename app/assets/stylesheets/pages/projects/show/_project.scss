@@ -1,11 +1,4 @@
 #project-details-container {
   @include standard-border;
   @include medium-padding;
-  
-  // Bootstrap container
-  & > div {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
 }
