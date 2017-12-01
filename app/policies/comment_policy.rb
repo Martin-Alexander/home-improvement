@@ -13,7 +13,7 @@ class CommentPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.joins(:project).where(project: { private: false })
+      scope.all
     end
   end
 
