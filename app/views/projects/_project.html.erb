@@ -5,7 +5,10 @@
       <%= @project.description %>
     </div>
     <div id="project-settings"> <!-- project sidebar actions -->
-      Settings
+      <button id="project-settings-button" class="btn btn-secondary">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+        Settings
+      </button>
     </div>
     <div id="project-sidebar-details"> <!-- project sidebar details -->
       <div>By: <%= @project.user.full_name %></div>
