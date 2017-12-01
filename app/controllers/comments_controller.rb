@@ -4,17 +4,17 @@ class CommentsController < ApplicationController
 
   def index
     project_comments = policy_scope(Comment)
-      .joins(:project).where(project: {private: false}, project_id: params[:project_id])
+      .joins(:project).where(projects: {private: false}, project_id: params[:project_id])
 
     case params[:filter]
-    when :new
+    when "new"
       @comments = project_comments.order(created_at: :desc)
-    when :top
+    when "top"
       @comments = project_comments.select("comments.*, COUNT(*) as like_count")
         .joins("LEFT JOIN likes ON likes.comment_id = comments.id ")
         .group("comments.id")
         .order("like_count")
-    when :active
+    when "active"
       @comments = project_comments.select("comments.*, COUNT(*) as comment_count")
         .joins("LEFT JOIN comments _comments ON _comments.comment_id = comments.id ")
         .group("comments.id")
