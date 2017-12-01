@@ -3,8 +3,23 @@ class CommentsController < ApplicationController
   before_action :authorize_comment, except: [:index, :create]
 
   def index
-    # byebug
-    # policy_scope(Comment).where(project_id: params[:project_id])
+    project_comments = policy_scope(Comment)
+      .joins(:project).where(project: {private: false}, project_id: params[:project_id])
+
+    case params[:filter]
+    when :new
+      @comments = project_comments.order(created_at: :desc)
+    when :top
+      @comments = project_comments.select("comments.*, COUNT(*) as like_count")
+        .joins("LEFT JOIN likes ON likes.comment_id = comments.id ")
+        .group("comments.id")
+        .order("like_count")
+    when :active
+      @comments = project_comments.select("comments.*, COUNT(*) as comment_count")
+        .joins("LEFT JOIN comments _comments ON _comments.comment_id = comments.id ")
+        .group("comments.id")
+        .order("comment_count")
+    end
   end
 
   def create
