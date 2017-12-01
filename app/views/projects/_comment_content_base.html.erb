@@ -1,6 +1,10 @@
-<div>
-  <div><%= comment.user.full_name %></div>
-  <div><%= comment.number_of_likes %><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+<div class="comment-header">
+  <div class="commenters-name"><%= comment.user.full_name %></div>
+  <div class="likes">
+    <%= link_to likes_path, method: :post, remote: true do %>
+      <%= comment.number_of_likes %><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+    <% end %>
+  </div>
 </div>
-<div><%= time_ago_in_words(comment.created_at) %></div>
+<div class="comment-time"><%= time_ago_in_words(comment.created_at) %></div>
 <div><%= comment.content %></div>

@@ -1,50 +1,44 @@
 .project-comment {
-  @include standard-border;
   @include light-spacing;
   @include medium-padding;
 
-  // Name and number of likes
-  &> div:first-child { 
-    &> div {
-      display: inline;
-      font-size: 13px;
+  margin-top: 8px;
+}
 
-      // Commenter's name
-      &:first-child {
-        color: $light-grey;
-        margin-right: 10px;
-        text-decoration: underline;
-      }
+.comment-header {
+}
 
-      // Likes
-      &:last-child {
-        font-size: 14px;
-        font-weight: bold;
-        color: $primary-color;
-        cursor: pointer;
-        position: relative;
-  
-        // Thumbs up icon
-        i {
-          position: absolute;
-          bottom: 2px;
-          margin-left: 5px;
-  
-          &:hover {
-            font-size: 18px;
-          }
-        }
-      }
+.commenters-name {
+  font-size: 13px; 
+  display: inline;
+  color: $light-grey;
+  margin-right: 10px;
+  text-decoration: underline;
+}
+
+.likes {
+  display: inline;
+  font-size: 14px;
+  font-weight: bold;
+  color: $primary-color;
+  cursor: pointer;
+  position: relative;
+
+  // Thumbs up icon
+  i {
+    position: absolute;
+    bottom: 2px;
+    margin-left: 5px;
+
+    &:hover {
+      font-size: 18px;
     }
   }
+}
 
-  // Time age comment was made
-  &> div:nth-child(2) {
-    color: $light-grey;
-    line-height: 5px;
-    margin-bottom: 8px;
-    font-size: 12px;
-  }
-
-  margin-top: 8px;
+.comment-time {
+  color: $light-grey;
+  line-height: 5px;
+  margin-bottom: 8px;
+  font-size: 12px;
 }
