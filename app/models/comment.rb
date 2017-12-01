@@ -25,4 +25,8 @@ class Comment < ApplicationRecord
   def number_of_likes
     likes.length
   end
+
+  def is_liked_by(user)
+    likes.pluck(:user_id).include?(user.id)
+  end
 end

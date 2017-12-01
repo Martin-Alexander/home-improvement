@@ -1,8 +1,14 @@
 <div class="comment-header">
   <div class="commenters-name"><%= comment.user.full_name %></div>
   <div class="likes">
-    <%= link_to likes_path(comment_id: comment.id), method: :post, remote: true do %>
-      <%= comment.number_of_likes %><i data-comment_id="<%= comment.id %>" class="like-button fa fa-thumbs-o-up" aria-hidden="true"></i>
+    <% if comment.is_liked_by(current_user) %>
+      <%= link_to like_path(comment), method: :delete, remote: true do %>
+        <%= comment.number_of_likes %><i style="font-size: 20px;" data-comment_id="<%= comment.id %>" class="unlike-button fa fa-thumbs-o-up" aria-hidden="true"></i>
+      <% end %>    
+    <% else %>
+      <%= link_to likes_path(comment_id: comment.id), method: :post, remote: true do %>
+        <%= comment.number_of_likes %><i data-comment_id="<%= comment.id %>" class="like-button fa fa-thumbs-o-up" aria-hidden="true"></i>
+      <% end %>
     <% end %>
   </div>
 </div>

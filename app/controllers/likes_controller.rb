@@ -6,7 +6,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:comment_id]).destroy
+    @like = Like.where(comment_id: params[:id], user: current_user).first.destroy
     authorize @like
     @like.destroy
   end
