@@ -1,5 +1,9 @@
 <div id="comment-section"> <!-- project comments container -->
   <h2>Comments</h2>
-  <div id="comment-filters"><span>New</span><span>Top</span><span>Active</span></div>
+  <div id="comment-filters">
+    <span><%= link_to "New", comments_path(project_id: @project.id, filer: :new), remote: true %> </span>
+    <span>Top</span>
+    <span>Active</span>
+  </div>
   <%= render partial: "comment", collection: @comments %>
 </div>
