@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, except: [:create]
-  before_action :authorize_comment, except: [:create]
+  before_action :set_comment, except: [:index, :create]
+  before_action :authorize_comment, except: [:index, :create]
+
+  def index
+    
+  end
 
   def create
     @comment = Comment.new(comment_params)
