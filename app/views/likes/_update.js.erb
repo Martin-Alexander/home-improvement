@@ -1,17 +1,20 @@
 document.querySelectorAll(".like").forEach(function(_like) {
   _like.addEventListener("click", function(event) {
     var selectedLike = event.currentTarget;
-    var hiddenLikesForm;
 
     if (selectedLike.dataset.is_liked === "true") {
-      hiddenLikesForm = document.getElementById("delete-like-form");
+
+      // Set up form
+      var hiddenLikesForm = document.getElementById("delete-like-form");
       hiddenLikesForm.action += "/" + selectedLike.dataset.comment_id;
       
+      // Set thumbs-up icon size and likes number
       selectedLike.style.fontSize = "inherit";
-      selectedLike.dataset.is_liked = "false";
-
       var numberOfLikes = selectedLike.previousElementSibling;
       numberOfLikes.innerHTML = parseInt(numberOfLikes.innerHTML) - 1;
+
+      // Update dataset
+      selectedLike.dataset.is_liked = "false";
     } else {
       var hiddenLikesForm = document.getElementById("create-like-form");
       hiddenLikesForm.action += "?comment_id=" + selectedLike.dataset.comment_id;
