@@ -12,13 +12,15 @@ class CommentsController < ApplicationController
     when "top"
       @comments = project_comments.select("comments.*, COUNT(*) as like_count")
         .joins("LEFT JOIN likes ON likes.comment_id = comments.id ")
+        .where(comment_id: nil)
         .group("comments.id")
-        .order("like_count")
+        .order("like_count DESC")
     when "active"
       @comments = project_comments.select("comments.*, COUNT(*) as comment_count")
-        .joins("LEFT JOIN comments _comments ON _comments.comment_id = comments.id ")
+        .joins("LEFT JOIN comments _comments ON _comments.comment_id = comments.id")
+        .where(comment_id: nil)
         .group("comments.id")
-        .order("comment_count")
+        .order("comment_count DESC")
     end
   end
 

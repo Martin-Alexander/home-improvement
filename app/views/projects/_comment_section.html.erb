@@ -2,8 +2,8 @@
   <h2>Comments</h2>
   <div id="comment-filters">
     <span><%= link_to "New", comments_path(project_id: @project.id, filter: :new), remote: true %> </span>
-    <span>Top</span>
-    <span>Active</span>
+    <span><%= link_to "Top", comments_path(project_id: @project.id, filter: :top), remote: true %> </span>
+    <span><%= link_to "Active", comments_path(project_id: @project.id, filter: :active), remote: true %> </span>
   </div>
-  <%= render partial: "comment", collection: @comments %>
+  <div id="comment-list"><%= render partial: "comment", collection: @comments %><div>
 </div>
