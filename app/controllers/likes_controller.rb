@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
   def create
-    @like = Like.new(user: current_user, comment: params[:comment_id])
+    @like = Like.new(user: current_user, comment_id: params[:comment_id])
     authorize @like
-    @like.save
+    @like.save!
   end
 
   def destroy
