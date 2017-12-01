@@ -1,5 +1,7 @@
 #navbar {
   background-color: $primary-color;
+  margin-bottom: 20px;
+
   &> div {
     @include space-between;
 
@@ -24,10 +26,6 @@
           font-size: 18px;
         }
       }
-    }
-
-    h1, h3 {
-      @include bold-secondary;
     }
   }
 }

@@ -1,9 +1,9 @@
-<div id="project-details-container"> <!-- project details container -->
-  <h1>
+<div id="project-details-container">
+  <h1 class="bold-primary">
     <%= action_name == "show" ? project.name : link_to(project.name, project_path(project)) %> 
-  </h2>
-  <div id="project-grid">  <!-- project details sans title container -->
-    <div id="project-description"> <!-- project description -->
+  </h1>
+  <div id="project-grid">
+    <div id="project-description">
       <%= project.description %>
     </div>
     <% if action_name == "show" && policy(project).edit? %>
@@ -16,7 +16,7 @@
         <% end %>
       </div>
     <% end %>
-    <div id="project-sidebar-details"> <!-- project sidebar details -->
+    <div id="project-sidebar-details">
       <div>By: <%= project.user.full_name %></div>
       <div>Status: <%= project.status %></div>
       <div>Estimated Level of effort: <strong><%= project.estimated_level_of_effort %></strong></div>

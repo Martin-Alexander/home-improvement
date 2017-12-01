@@ -1,5 +1,5 @@
 <div id="comment-section"> <!-- project comments container -->
-  <h2>Comments</h2>
+  <h2 class="bold-primary">Comments</h2>
   <div id="comment-filters">
     <span><%= link_to "New", comments_path(project_id: @project.id, filter: :new), remote: true %> </span>
     <span><%= link_to "Top", comments_path(project_id: @project.id, filter: :top), remote: true %> </span>

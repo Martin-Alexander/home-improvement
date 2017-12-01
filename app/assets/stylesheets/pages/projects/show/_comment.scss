@@ -3,9 +3,8 @@
   @include light-spacing;
   @include medium-padding;
 
+  // Name and number of likes
   &> div:first-child { 
-
-    // Name and number of likes
     &> div {
       display: inline;
       font-size: 13px;
@@ -35,7 +34,6 @@
             font-size: 18px;
           }
         }
-
       }
     }
   }

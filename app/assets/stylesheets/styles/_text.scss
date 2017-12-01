@@ -1,5 +1,16 @@
-@mixin bold-secondary {
+.bold-primary {
+  font-weight: bold;
+  margin: 0;
+}
+
+.bold-secondary {
   font-weight: bold;
   color: white;
   margin: 0;
+}
+
+.link-underline {
+  &:hover {
+    text-decoration: underline;
+  }
 }

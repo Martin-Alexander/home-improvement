@@ -1,3 +1,6 @@
-<%= link_to "Back to my project", project_path(@project) %>
-<h2>Project Settings</h2>
+<div id="back-to-project-link" class="link-underline">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  <%= link_to "Back to my project", project_path(@project) %>
+</div>
+<h2 class="bold-primary">Project Settings</h2>
 <%= render "form" %>

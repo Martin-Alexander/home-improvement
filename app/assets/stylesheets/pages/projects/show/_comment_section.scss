@@ -1,9 +1,4 @@
 #comment-section {
-
-  &> h2 {
-    font-weight: bold;
-  }
-
   &> div { &> span {
     font-size: 16px;
     text-decoration: underline;
@@ -18,5 +13,6 @@
 #comment-filters {
   @include space-between;
 
+  margin-top: 15px;
   width: 125px;
 }
