@@ -1,16 +1,17 @@
 <div id="navbar">
   <div>
     <div>
-      <h1>HOME IMPROVEMENT</h1>
+      <h1><%= link_to "HOME IMPROVEMENT", root_path %></h1>
     </div>
     <div>
-      <h3><%= link_to "New Project", new_project_path %></h3>    
-      <%# if current_user %>
+      <% if current_user %>
+        <h3><%= link_to "New Project", new_project_path %></h3>    
         <!-- <div><%# link_to "Sign out", destroy_user_session_path, method: :delete %></div> -->
-      <%# else %>
-        <!-- <div><%# link_to "Sign in", new_user_session_path %></div> -->
-        <!-- <div><%# link_to "Sign up", new_user_registration_path %></div> -->
-      <%# end %>
+      <% else %>
+        <h3><%= link_to "Sign in", new_user_session_path %></h3>
+        <p>or</p>
+        <h3><%= link_to "Sign up", new_user_registration_path %></h3>
+      <% end %>
     </div>
   </div>
 </div>

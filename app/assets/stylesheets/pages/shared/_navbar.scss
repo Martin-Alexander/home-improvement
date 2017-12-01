@@ -8,6 +8,24 @@
     height: 125px;
     margin: 0 auto;
 
+    // Navbar right
+    &:first-child {
+
+    }
+
+    // Navbar left
+    &:last-child {
+      &> div {
+        @include space-between;
+
+        // The "or" between sign in and sign up
+        &> p {
+          margin: 0 10px;
+          font-size: 18px;
+        }
+      }
+    }
+
     h1, h3 {
       @include bold-secondary;
     }
