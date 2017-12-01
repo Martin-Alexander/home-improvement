@@ -1,5 +1,18 @@
-<div> <!-- main project container -->
+<div>
   <%= render "project", project: @project %>
   <%= render "comments/comment_section" %>
 </div>
 
+<%= form_tag "/likes", method: :delete, id: "delete-like-form" do %>
+  <%= hidden_field_tag :like %>
+<% end %>
+
+<%= form_tag "/likes", method: :post, id: "create-like-form" do %>
+  <%= hidden_field_tag :like %>
+<% end %>
+
+<%= content_for :javascript do %>
+  <%= javascript_tag do %>
+    <%= render "likes/update.js.erb" %>
+  <% end %>
+<% end %>
