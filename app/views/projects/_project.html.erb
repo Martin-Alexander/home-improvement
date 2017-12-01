@@ -1,21 +1,23 @@
 <div id="project-details-container"> <!-- project details container -->
-  <h1><%= @project.name %></h2> <!-- project title -->
+  <h1><%= project.name %></h2> <!-- project title -->
   <div id="project-grid">  <!-- project details sans title container -->
     <div id="project-description"> <!-- project description -->
-      <%= @project.description %>
+      <%= project.description %>
     </div>
-    <div id="project-settings"> <!-- project sidebar actions -->
-      <button id="project-settings-button" class="btn btn-secondary">
-        <i class="fa fa-cog" aria-hidden="true"></i>
-        Settings
-      </button>
-    </div>
+    <% if show_settings_button %>
+      <div id="project-settings">
+        <button id="project-settings-button" class="btn btn-secondary">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          Settings
+        </button>
+      </div>
+    <% end %>
     <div id="project-sidebar-details"> <!-- project sidebar details -->
-      <div>By: <%= @project.user.full_name %></div>
-      <div>Status: <%= @project.status %></div>
-      <div>Estimated Level of effort: <strong><%= @project.estimated_level_of_effort %></strong></div>
-      <% if @project.status == "completed" %>
-        <div>Actual Level of effort: <strong><%= @project.actual_level_of_effort %></strong></div>
+      <div>By: <%= project.user.full_name %></div>
+      <div>Status: <%= project.status %></div>
+      <div>Estimated Level of effort: <strong><%= project.estimated_level_of_effort %></strong></div>
+      <% if project.status == "completed" %>
+        <div>Actual Level of effort: <strong><%= project.actual_level_of_effort %></strong></div>
       <% end %>
     </div>
   </div>
