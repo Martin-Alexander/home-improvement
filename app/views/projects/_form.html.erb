@@ -1,4 +1,4 @@
-<%= simple_form_for @project do |f| %>
+<%= simple_form_for @project, html: { class: "projects-form" } do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :private %>
