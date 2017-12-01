@@ -6,16 +6,10 @@
 <% end %>
 <div><%= link_to "New Project", new_project_path %></div>
 
-<div id="react-entry"></div>
 
 <% @projects.each do |project| %>
-  <h2><%= link_to project.name, project_path(project) %></h2>
-  <div>By: <%= project.user.full_name %></div>
-  <div><%= project.description %></div>
-  <div>Status: <%= project.status %></div>
-  <div>Estimated Level of effort: <strong><%= project.estimated_level_of_effort %></strong></div>
-  <% if project.status == "completed" %>
-    <div>Actual Level of effort: <strong><%= project.actual_level_of_effort %></strong></div>
+  <%= link_to project_path(project) do %>
+    <%= render "project", project: project, show_settings_button: false %>
   <% end %>
 <% end %>
 
