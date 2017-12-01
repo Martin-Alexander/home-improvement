@@ -5,5 +5,5 @@
     <span><%= link_to "Top", comments_path(project_id: @project.id, filter: :top), remote: true %> </span>
     <span><%= link_to "Active", comments_path(project_id: @project.id, filter: :active), remote: true %> </span>
   </div>
-  <div id="comment-list"><%= render partial: "comment", collection: @comments %><div>
+  <div id="comment-list"><%= render partial: "comments/comment", collection: @comments %><div>
 </div>
