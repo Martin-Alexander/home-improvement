@@ -1,5 +1,22 @@
+#comment-section {
+
+  &> h2 {
+    font-weight: bold;
+  }
+
+  &> div { &> span {
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: #ED5353;
+    }
+  }}
+}
+
 #comment-filters {
   @include space-between;
 
-  width: 100px;
+  width: 125px;
 }
