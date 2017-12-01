@@ -3,10 +3,10 @@ body {
 }
 
 a {
-  color: black;
-  cursor: auto;
+  color: inherit;
+  cursor: inherit;
   &:hover {
-    text-decoration: none;
-    color: black;
+    text-decoration: inherit;
+    color: inherit;
   }
 }
