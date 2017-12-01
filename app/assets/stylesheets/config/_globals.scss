@@ -9,6 +9,10 @@ a {
     text-decoration: inherit;
     color: inherit;
   }
+
+  &:focus {
+    color: inherit;
+  }
 }
 
 abbr {
