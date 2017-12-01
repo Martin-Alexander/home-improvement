@@ -3,10 +3,40 @@
   @include light-spacing;
   @include medium-padding;
 
-  // Div containing comment author and number of likes
-  &> div:first-child {
+  &> div:first-child { 
+
+    // Name and number of likes
     &> div {
       display: inline;
+      font-size: 13px;
+
+      // Commenter's name
+      &:first-child {
+        color: $light-grey;
+        margin-right: 10px;
+        text-decoration: underline;
+      }
+
+      // Likes
+      &:last-child {
+        font-size: 14px;
+        font-weight: bold;
+        color: $primary-color;
+        cursor: pointer;
+        position: relative;
+  
+        // Thumbs up icon
+        i {
+          position: absolute;
+          bottom: 2px;
+          margin-left: 5px;
+  
+          &:hover {
+            font-size: 18px;
+          }
+        }
+
+      }
     }
   }
 
