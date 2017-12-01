@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_action :authorize_comment, except: [:index, :create]
 
   def index
-    
+    # byebug
+    # policy_scope(Comment).where(project_id: params[:project_id])
   end
 
   def create
