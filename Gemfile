@@ -66,4 +66,5 @@ gem "jquery-rails"
 gem "webpacker", "~> 3.0"
 gem "faker"
 gem "font-awesome-sass"
-gem 'bootstrap-modal-rails'
+gem "bootstrap-modal-rails"
+gem "kramdown"
