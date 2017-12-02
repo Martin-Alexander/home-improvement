@@ -7,7 +7,6 @@ ActiveAdmin.register Project do
       project.user.full_name
     end
     column :name
-    column :description
     column :private
     column :estimated_level_of_effort
     column :actual_level_of_effort
