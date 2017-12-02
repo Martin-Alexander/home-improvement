@@ -34,4 +34,8 @@ class Project < ApplicationRecord
   validates_inclusion_of :status, in: Statuses
   
   validate :actual_level_of_effort_only_on_completion
+
+  def number_of_comments
+    comments.count
+  end
 end
