@@ -18,3 +18,16 @@
 .thin-primary {
   margin: 0; 
 }
+
+.lesser-underline {
+  font-size: 13px; 
+  display: inline;
+  color: $light-grey;
+  margin-right: 10px;
+  text-decoration: underline;  
+}
+
+.bold-clickable {
+  font-weight: bold;
+  cursor: pointer;
+}
