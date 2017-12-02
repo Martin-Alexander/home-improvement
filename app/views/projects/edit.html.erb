@@ -3,7 +3,9 @@
   <%= link_to "Back to my project", project_path(@project) %>
 </div>
 <h2 class="bold-primary">Project Settings</h2>
-<button id="project-complete-button" class="big-bold-button btn btn-success" data-toggle="modal" data-target="#exampleModal">Complete!</button>
+<% if @project.status != "completed" %>
+  <button id="project-complete-button" class="big-bold-button btn btn-success" data-toggle="modal" data-target="#exampleModal">Complete!</button>
+<% end %>
 <%= render "form" %>
 <%= render "complete_project_modal" %>
 

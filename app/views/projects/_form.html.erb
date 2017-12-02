@@ -2,8 +2,10 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :private %>
-  <%= f.input :status %>
-  <%= f.input :estimated_level_of_effort %>
+  <% if @project.status != "completed" %>
+    <%= f.input :status %>
+    <%= f.input :estimated_level_of_effort %>
+  <% end %>
   <%= f.input :actual_level_of_effort, as: :hidden %>
   <%= f.button :submit %>
 <% end %>
