@@ -38,4 +38,12 @@ class Project < ApplicationRecord
   def number_of_comments
     comments.count
   end
+
+  # Removes `completed` as an option and returns array with stylized and
+  # well-formatted versions
+  def self.statuses_as_select_options
+    Project::Statuses
+      .reject { |status| status == "completed" }
+      .map { |status| [status.capitalize, status] }
+  end
 end

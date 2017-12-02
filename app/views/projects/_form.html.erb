@@ -4,7 +4,7 @@
   <%= f.input :private %>
   <% if @project.status != "completed" %>
     <div class="small-dropdown">
-      <%= f.input :status, collection: Project::Statuses.reject { |status| status == "completed" }.map { |status| [status.capitalize, status] } %>
+      <%= f.input :status, collection: Project.statuses_as_select_options %>
       <%= f.input :estimated_level_of_effort, collection: 1..10 %>
     </div>
   <% end %>

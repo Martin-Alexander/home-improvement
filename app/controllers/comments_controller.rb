@@ -3,17 +3,25 @@ class CommentsController < ApplicationController
   before_action :authorize_comment, except: [:index, :create]
 
   def index
+    # Only top-level commments of selected project (with safeguard against showing
+    # comments of private projects)
     project_comments = policy_scope(Comment)
       .joins(:project).where(comment_id: nil, projects: {private: false}, project_id: params[:project_id])
 
     case params[:filter]
+
+    # Comments in reverse cronological order
     when "new"
       @comments = project_comments.order(created_at: :desc)
+
+    # Comments in order of most likes
     when "top"
       @comments = project_comments.select("comments.*, COUNT(*) as like_count")
         .joins("LEFT JOIN likes ON likes.comment_id = comments.id ")
         .group("comments.id")
         .order("like_count DESC")
+
+    # Comments in order of most comments
     when "active"
       @comments = project_comments.select("comments.*, COUNT(_comments.*) as comment_count")
         .joins("LEFT JOIN comments _comments ON _comments.comment_id = comments.id")
