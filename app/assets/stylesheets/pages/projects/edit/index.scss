@@ -1,14 +1,2 @@
-#back-to-project-link {
-  margin-bottom: 18px;
-  font-size: 18px;
-
-  &> i {
-    font-size: 19px;
-    margin-right: 8px;
-  }
-}
-
-#project-complete-button {
-  border-radius: 0px;
-  margin-top: 30px;
-}
+@import "form";
+@import "modal";
