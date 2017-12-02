@@ -1,5 +1,15 @@
 var slider = document.getElementById("myRange");
-var output = document.getElementById("ammount-of-effort");
-output.innerHTML = slider.value;
+var display = document.getElementById("ammount-of-effort");
+var inputField = document.getElementById("project_actual_level_of_effort");
+display.innerHTML = slider.value;
 
-slider.oninput = function() { output.innerHTML = this.value; }
+slider.oninput = function() { 
+  display.innerHTML = this.value;
+  inputField.value = this.value;
+}
+
+document.getElementById("complete-project-confirmation-button")
+  .addEventListener("click", function() {
+    document.getElementById("project_status").value = "completed"
+    document.getElementById("projects-form").submit();
+  })
