@@ -6,3 +6,9 @@
 <button id="project-complete-button" class="big-bold-button btn btn-success" data-toggle="modal" data-target="#exampleModal">Complete!</button>
 <%= render "form" %>
 <%= render "complete_project_modal" %>
+
+<%= content_for :javascript do %>
+  <%= javascript_tag do %>
+    <%= raw render "slider.js.erb" %>
+  <% end %>
+<% end %>
