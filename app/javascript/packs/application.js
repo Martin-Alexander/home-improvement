@@ -1,12 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import CommentField from "./comment-field";
 
-
-class Hello extends React.Component {
-  render() {
-    return <h1>Hello World!</h1>
-  }
-}
-
-ReactDOM.render(<Hello />, document.getElementById("react-entry"))
+ReactDOM.render(<CommentField />, document.getElementById("new-comment"))
 
