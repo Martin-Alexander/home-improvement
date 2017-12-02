@@ -3,9 +3,11 @@
   <%= f.input :description %>
   <%= f.input :private %>
   <% if @project.status != "completed" %>
-    <%= f.input :status %>
-    <%= f.input :estimated_level_of_effort %>
+    <div class="small-dropdown">
+      <%= f.input :status, collection: Project::Statuses.reject { |status| status == "completed" }.map { |status| [status.capitalize, status] } %>
+      <%= f.input :estimated_level_of_effort, collection: 1..10 %>
+    </div>
   <% end %>
   <%= f.input :actual_level_of_effort, as: :hidden %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "btn btn-success square-borders" %>
 <% end %>

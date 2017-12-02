@@ -5,10 +5,7 @@
   &> div {
     @include space-between;
 
-    max-width: $main-wrapper-width;
-    padding: 0 10px;
     height: 125px;
-    margin: 0 auto;
 
     // Navbar right
     &:first-child {
