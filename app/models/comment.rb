@@ -30,4 +30,8 @@ class Comment < ApplicationRecord
     return false unless user
     likes.pluck(:user_id).include?(user.id)
   end
+
+  def is_top_level
+    parent.nil?
+  end
 end
