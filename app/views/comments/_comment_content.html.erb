@@ -1,5 +1,5 @@
 <div class="comment-header">
-  <div class="commenters-name"><%= comment.user.full_name %></div>
+  <div class="lesser-underline"><%= comment.user.full_name %></div>
   <div class="likes">
     <span><%= comment.number_of_likes %></span>
     <i 
@@ -13,3 +13,12 @@
 </div>
 <div class="comment-time"><%= time_ago_in_words(comment.created_at) %></div>
 <div><%= comment.content %></div>
+<% if comment.is_top_level %>
+  <div class="lesser-underline bold-clickable">Reply</div>
+<% end %>
+<% if policy(comment).edit? %>
+  <div class="lesser-underline bold-clickable">Edit</div>
+<% end %>
+<% if policy(comment).destroy? %>
+  <div class="lesser-underline bold-clickable">Delete</div>
+<% end %>
