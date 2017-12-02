@@ -4,6 +4,7 @@
     <title>HomeImprovement</title>
     <%= csrf_meta_tags %>
 
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -15,7 +16,6 @@
       </div>
       <%= render "shared/footer" %>
     </div>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= content_for :javascript %>
   </body>
 </html>
