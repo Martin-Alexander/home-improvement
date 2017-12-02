@@ -10,18 +10,3 @@
 <%= form_tag "/likes", method: :post, id: "create-like-form" do %>
   <%= hidden_field_tag :like %>
 <% end %>
-
-<% if user_signed_in? %>
-  <%= content_for :javascript do %>
-    <%= javascript_tag do %>
-      <%= render "likes/update.js.erb" %>
-    <% end %>
-  <% end %>
-<% else %>
-  <%# content_for :javascript do %>
-    <%# javascript_tag do %>
-      <%# Please sign up dynamic message javascript would be nice %>
-      <%# render "likes/update.js.erb" %>
-    <%# end %>
-  <%# end %>
-<% end %>

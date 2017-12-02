@@ -8,3 +8,18 @@
   <div id="new-comment"></div>
   <div id="comment-list"><%= render partial: "comments/comment", collection: @comments %></div>
 </div>
+
+<% if user_signed_in? %>
+  <%= content_for :javascript do %>
+    <%= javascript_tag do %>
+      <%= render "likes/update.js.erb" %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%# content_for :javascript do %>
+    <%# javascript_tag do %>
+      <%# Please sign up dynamic message javascript would be nice %>
+      <%# render "likes/update.js.erb" %>
+    <%# end %>
+  <%# end %>
+<% end %>

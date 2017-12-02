@@ -3,10 +3,12 @@ class CommentsController < ApplicationController
   before_action :authorize_comment, except: [:index, :create]
 
   def index
+    @project = Project.find(params[:project_id])
+
     # Only top-level commments of selected project (with safeguard against showing
     # comments of private projects)
     project_comments = policy_scope(Comment)
-      .joins(:project).where(comment_id: nil, projects: {private: false}, project_id: params[:project_id])
+      .joins(:project).where(comment_id: nil, projects: {private: false}, project: @project)
 
     case params[:filter]
 
