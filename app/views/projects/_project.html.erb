@@ -2,26 +2,30 @@
   <h1 class="bold-primary">
     <%= action_name == "show" ? project.name : link_to(project.name, project_path(project)) %> 
   </h1>
+  <div class="project-sub-header-details">
+    <i class="fa fa-user" aria-hidden="true"></i><span><%= project.user.full_name %></span>
+    <i class="fa fa-clock-o" aria-hidden="true"></i><span><%= time_ago_in_words(project.user.created_at) %> ago</span>
+  </div>
   <div id="project-grid">
     <div id="project-description">
       <%= Kramdown::Document.new(project.description).to_html.html_safe %>
     </div>
-    <% if action_name == "show" && policy(project).edit? %>
-      <div id="project-settings">
+    <div id="project-sidebar-details">
+      <% if action_name == "show" && policy(project).edit? %>
         <%= link_to edit_project_path(project) do %>
           <button class="big-bold-button btn btn-secondary">
             <i class="fa fa-cog" aria-hidden="true"></i>
             Settings
           </button>
         <% end %>
-      </div>
-    <% end %>
-    <div id="project-sidebar-details">
-      <div>By: <%= project.user.full_name %></div>
-      <div>Status: <%= project.status %></div>
-      <div>Estimated Level of effort: <strong><%= project.estimated_level_of_effort %></strong></div>
+      <% end %>
+      <div>Status</div>
+      <h2 class="bold-primary"><%= project.status.capitalize %></h2>
+      <div>Estimated Level of effort</div>
+      <h2 class="bold-primary"><%= project.estimated_level_of_effort %></h2>
       <% if project.status == "completed" %>
-        <div>Actual Level of effort: <strong><%= project.actual_level_of_effort %></strong></div>
+        <div>Actual Level of effort</div>
+        <h2 class="bold-primary"><%= project.actual_level_of_effort %></h2>
       <% end %>
     </div>
   </div>
