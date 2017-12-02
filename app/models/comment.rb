@@ -27,6 +27,7 @@ class Comment < ApplicationRecord
   end
 
   def is_liked_by(user)
+    return false unless user
     likes.pluck(:user_id).include?(user.id)
   end
 end
