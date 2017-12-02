@@ -5,8 +5,10 @@
     </div>
     <div>
       <% if current_user %>
-        <h3 class="bold-secondary"><%= link_to "New Project", new_project_path %></h3>
-        <p></p>   
+        <% unless action_name == "new" && controller_name == "projects" %>
+          <h3 class="bold-secondary"><%= link_to "New Project", new_project_path %></h3>
+          <p></p>
+        <% end %>
         <h3 class="bold-secondary"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></h3>
       <% else %>
         <h3 class="bold-secondary"><%= link_to "Sign in", new_user_session_path %></h3>
