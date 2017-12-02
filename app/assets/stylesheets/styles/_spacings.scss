@@ -10,3 +10,8 @@
 @mixin heavy-padding {
   padding: 20px;
 }
+
+.comment-spacing {
+  @include light-spacing;
+  margin-top: 8px;
+}
