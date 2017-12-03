@@ -3,10 +3,4 @@
   <%= render "comments/comment_section" %>
 </div>
 
-<%= form_tag "/likes", method: :delete, id: "delete-like-form" do %>
-  <%= hidden_field_tag :like %>
-<% end %>
-
-<%= form_tag "/likes", method: :post, id: "create-like-form" do %>
-  <%= hidden_field_tag :like %>
-<% end %>
+<%= render "projects/hidden_forms" %>

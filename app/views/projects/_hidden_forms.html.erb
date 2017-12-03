@@ -1,0 +1,19 @@
+<%= form_tag likes_url, method: :delete, id: "delete-like-form" do %>
+  <%= hidden_field_tag :like %>
+<% end %>
+
+<%= form_tag likes_url, method: :post, id: "create-like-form" do %>
+  <%= hidden_field_tag :like %>
+<% end %>
+
+<%= form_tag comments_url, method: :post, id: "create-comment-form" do %>
+  <%= hidden_field_tag :like %>
+<% end %>
+
+<%= form_tag comment_url, method: :patch, id: "edit-comment-form" do %>
+  <%= hidden_field_tag :like %>
+<% end %>
+
+<%= form_tag comment_url, method: :delete, id: "delete-comment-form" do %>
+  <%= hidden_field_tag :like %>
+<% end %>
