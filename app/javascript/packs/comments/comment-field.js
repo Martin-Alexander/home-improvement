@@ -11,7 +11,8 @@ class CommentField extends React.Component {
     const form = this.props.forms.create;
     form.querySelector(".comment-form-comment-id").value = this.props.commentId || null
     form.querySelector(".comment-form-content").value = this.refs.textarea.value
-    form.submit();
+    this.refs.textarea.value = "";
+    form.querySelector(".silent-submit").click();
   }
 
   render() {

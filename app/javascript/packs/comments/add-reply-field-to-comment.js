@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CommentField from "./comment-field";
+import hiddenCommentForms from "./hidden-comment-forms";
 
 // Not all browsers give `NodeList` the `every` function
 NodeList.prototype.every = Array.prototype.every;

@@ -6,17 +6,20 @@
   <%= hidden_field_tag :like %>
 <% end %>
 
-<%= form_tag comments_url, method: :post, id: "create-comment-form" do %>
+<%= form_tag comments_url, method: :post, remote: true, id: "create-comment-form" do %>
   <%= hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
   <%= hidden_field_tag :project_id, @project.id, class: "comment-form-project-id" %>
   <%= hidden_field_tag :content, "", class: "comment-form-content" %>
+  <%= submit_tag "", class: "silent-submit", style: "display: none;" %>
 <% end %>
 
-<%= form_tag comment_url, method: :patch, id: "edit-comment-form" do %>
+<%= form_tag comment_url, method: :patch, remote: true, id: "edit-comment-form" do %>
   <%= hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
   <%= hidden_field_tag :content, "", class: "comment-form-content" %>
+  <%= submit_tag "", class: "silent-submit", style: "display: none;" %>
 <% end %>
 
-<%= form_tag comment_url, method: :delete, id: "delete-comment-form" do %>
+<%= form_tag comment_url, method: :delete, remote: true, id: "delete-comment-form" do %>
   <%= hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
+  <%= submit_tag "", class: "silent-submit", style: "display: none;" %>
 <% end %>

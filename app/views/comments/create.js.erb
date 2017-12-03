@@ -1,0 +1,11 @@
+<% if @comment.is_top_level %>
+  document.getElementById("comment-list").insertAdjacentHTML("afterbegin", '<%= j render("comments/reply", reply: @comment) %>')
+<% else %>
+  document.getElementById("comment-<%= @comment.comment_id %>").insertAdjacentHTML("beforeend", '<%= j render("comments/reply", reply: @comment) %>');
+<% end %>
+
+document.querySelectorAll(".reply-field").forEach(function(replyField) {
+  replyField.remove();
+});
+
+<%= raw render("likes/update.js.erb") %>

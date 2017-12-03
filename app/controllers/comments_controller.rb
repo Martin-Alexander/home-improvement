@@ -38,15 +38,11 @@ class CommentsController < ApplicationController
 
     authorize_comment
 
-    unless @comment.save
-      render json: @comment.error, status: :unprocessable_entity
-    end
+    @comment.save
   end
 
   def update
-    unless params[:comment] && @comment.update(content: params[:comment][:content])
-      render json: @comment.error, status: :unprocessable_entity
-    end
+    @comment.update(content: params[:comment][:content]) rescue false
   end
 
   def destroy
