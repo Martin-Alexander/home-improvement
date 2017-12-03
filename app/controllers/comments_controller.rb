@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:update]
   before_action :authorize_comment, only: [:update]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @project = Project.find(params[:project_id])
