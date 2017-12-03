@@ -12,5 +12,5 @@
   </div>
 </div>
 <div class="comment-time"><%= time_ago_in_words(comment.created_at) rescue comment %></div>
-<div><%= comment.content %></div>
+<div><%= Kramdown::Document.new(comment.content).to_html.html_safe %></div>
 <%= render "comments/comment_actions", comment: comment %>
