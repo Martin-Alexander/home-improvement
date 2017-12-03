@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, except: [:index, :create]
-  before_action :authorize_comment, except: [:index, :create]
+  before_action :set_comment, only: [:update]
+  before_action :authorize_comment, only: [:update]
 
   def index
     @project = Project.find(params[:project_id])
@@ -46,6 +46,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:comment_id])
+    authorize @comment
     @comment.destroy
   end
 

@@ -13,11 +13,11 @@
   <%= submit_tag "", class: "silent-submit", style: "display: none;" %>
 <% end %>
 
-<%= form_tag comment_url, method: :patch, remote: true, id: "edit-comment-form" do %>
-  <%= hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
-  <%= hidden_field_tag :content, "", class: "comment-form-content" %>
-  <%= submit_tag "", class: "silent-submit", style: "display: none;" %>
-<% end %>
+<%# form_tag comment_url, method: :patch, remote: true, id: "edit-comment-form" do %>
+  <%# hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
+  <%# hidden_field_tag :content, "", class: "comment-form-content" %>
+  <%# submit_tag "", class: "silent-submit", style: "display: none;" %>
+<%# end %>
 
 <%= form_tag comment_url, method: :delete, remote: true, id: "delete-comment-form" do %>
   <%= hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
