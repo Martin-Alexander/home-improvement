@@ -23,7 +23,7 @@ const addReplyFieldToComment = (replyButtonElement) => {
   }
 }
 
-// Propts the user to confirm they want to discard unsaved changes
+// Prompts the user to confirm they want to discard unsaved changes
 const userWantsToDiscardUnsavedChanges = () => {
   return confirm("You have unsaved changes. Are you sure you want to continue?");
 }
