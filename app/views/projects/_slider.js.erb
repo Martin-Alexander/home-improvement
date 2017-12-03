@@ -10,6 +10,13 @@ slider.oninput = function() {
 
 document.getElementById("complete-project-confirmation-button")
   .addEventListener("click", function() {
-    document.getElementById("project_status").value = "completed"
+    const option = document.createElement("option");
+    option.value = "completed";
+    option.id = "completed";
+
+    const projectStatus = document.getElementById("project_status");
+    projectStatus.add(option);
+    projectStatus.value = "completed";
+
     document.getElementById("projects-form").submit();
   });
