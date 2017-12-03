@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @projects = policy_scope(Project).order(status: :desc)
+    @projects = policy_scope(Project).order(created_at: :desc)
   end
 
   def show

@@ -1,3 +1,20 @@
+project_places = [
+  "Basement",
+  "Villa",
+  "Porch",
+  "Backyard",
+  "Front Yard",
+  "Swimming Pool",
+  "Kitchen",
+  "Living Room"
+]
+
+project_types = [
+  "Renovation",
+  "Refurbish",
+  "Construction"
+]
+
 print "Clearing users & projects... "
 
 User.destroy_all # Destroys all projects as well
@@ -10,38 +27,17 @@ Comment.destroy_all # Destroys all likes & replies as well
 
 puts "Done"
 
-puts "Seeding users... "
+print "Seeding users... "
 
-admin = User.create!({
-  email: "admin@gmail.com",
-  first_name: "Jerry",
-  last_name: "Seinfeld",
-  password: "123456",
-  admin: true
-})
+20.times do 
+  name = Faker::Seinfeld.character
 
-user1 = User.create!({
-  email: "george@gmail.com",
-  first_name: "George",
-  last_name: "Constanza",
-  password: "123456" 
-})
-
-user2 = User.create!({
-  email: "elaine@gmail.com",
-  first_name: "Elaine",
-  last_name: "Benes",
-  password: "123456"
-})
-
-10.times do 
-  name = rand > 0.5 ? Faker::StarTrek.character : Faker::StarTrek.villain
   User.create({
-    email: name.chars.join("").downcase + "@gmail.com",
+    email: name.chars.join("").downcase.gsub(" ", "") + "@gmail.com",
     first_name: name.split(" ")[0],
-    last_name: name.split(" ")[1] || "StarTrek" ,
+    last_name: name.split(" ")[1],
     password: "123456"
-  })
+  }) 
 end
 
 puts "Done"
@@ -52,8 +48,8 @@ print "Seeding prjects... "
   status = Project::Statuses.sample
   Project.create!({
     user: User.all.sample,
-    name: Faker::Hipster.sentence,
-    description: Faker::Hipster.paragraphs(4).join(" "),
+    name: project_places.sample + " " + project_types.sample,
+    description: Faker::Lorem.paragraphs(3).join(" "),
     private: Faker::Boolean.boolean(0.2),
     estimated_level_of_effort: rand(1..10),
     actual_level_of_effort: status == "completed" ? rand(1..10) : nil,
@@ -81,7 +77,7 @@ Comment.create!({
   Comment.create!({
     user: User.all.sample,
     project: project,
-    content: Faker::Seinfeld.quote,
+    content: rand > 0.5 ? Faker::Seinfeld.quote : Faker::HarryPotter.quote,
     parent: parent
   })
 end
