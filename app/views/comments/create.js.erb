@@ -1,11 +1,12 @@
 <% if @comment.is_top_level %>
-  document.getElementById("comment-list").insertAdjacentHTML("afterbegin", '<%= j render("comments/reply", reply: @comment) %>')
+  document.getElementById("comment-list").insertAdjacentHTML("afterbegin", '<%= j render("comments/comment", comment: @comment) %>')
 <% else %>
   document.getElementById("comment-<%= @comment.comment_id %>").insertAdjacentHTML("beforeend", '<%= j render("comments/reply", reply: @comment) %>');
 <% end %>
 
 document.querySelectorAll(".reply-field").forEach(function(replyField) {
-  replyField.remove();
+  replyField.parentNode.remove();
 });
 
 <%= raw render("likes/update.js.erb") %>
+<%= raw render("comments/comment_field.js.erb") %>

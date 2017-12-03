@@ -53,7 +53,7 @@ const deleteAllOtherReplyFieldsOnPage = () => {
   
   if (areAllowedToRemoveAllReplyFields(allOtherReplyFields)) {
     allOtherReplyFields.forEach((replyField) => {
-      replyField.remove();
+      replyField.parentNode.remove();
     });
   }
 }
