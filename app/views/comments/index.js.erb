@@ -1,3 +1,4 @@
 document.getElementById("comment-list").innerHTML = "<%= j render(partial: 'comments/comment', collection: @comments) %>";
 
 <%= raw render("likes/update.js.erb") %>
+<%= raw render("comments/comment_field.js.erb") %>

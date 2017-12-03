@@ -23,3 +23,9 @@
     <%# end %>
   <%# end %>
 <% end %>
+
+<%= content_for :javascript do %>
+  <%= javascript_tag do %>
+    <%= render "comments/comment_field.js.erb" %>
+  <% end %>
+<% end %>

@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 
 class CommentField extends React.Component {
   render() {
+    const type = this.props.reply ? "reply" : "comment"
+
     const wrapperStyle = {
       display: "flex",
       flexDirection: "column",
@@ -25,9 +27,9 @@ class CommentField extends React.Component {
     }
 
     return(
-      <div className="standard-border comment-spacing">
+      <div className={type + "-field standard-border comment-spacing"}>
         <div style={wrapperStyle}>
-          <h3 style={headerStyle} className="thin-primary">Leave a comment</h3>
+          <h3 style={headerStyle} className="thin-primary">Leave a {type}</h3>
           <textarea placeholder="Say something constructive..." style={textAreaStyle}></textarea>
           <button className="btn btn-success square-borders" style={buttonStyle}>Send</button>
         </div>
