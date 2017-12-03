@@ -24,6 +24,6 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def user_is_admin?
-    user.admin
+    user && user.admin
   end
 end
