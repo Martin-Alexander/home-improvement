@@ -7,13 +7,16 @@
 <% end %>
 
 <%= form_tag comments_url, method: :post, id: "create-comment-form" do %>
-  <%= hidden_field_tag :like %>
+  <%= hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
+  <%= hidden_field_tag :project_id, @project.id, class: "comment-form-project-id" %>
+  <%= hidden_field_tag :content, "", class: "comment-form-content" %>
 <% end %>
 
 <%= form_tag comment_url, method: :patch, id: "edit-comment-form" do %>
-  <%= hidden_field_tag :like %>
+  <%= hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
+  <%= hidden_field_tag :content, "", class: "comment-form-content" %>
 <% end %>
 
 <%= form_tag comment_url, method: :delete, id: "delete-comment-form" do %>
-  <%= hidden_field_tag :like %>
+  <%= hidden_field_tag :comment_id, "", class: "comment-form-comment-id" %>
 <% end %>

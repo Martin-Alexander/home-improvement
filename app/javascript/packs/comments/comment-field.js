@@ -2,8 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 class CommentField extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    const form = this.props.forms.create;
+    form.querySelector(".comment-form-comment-id").value = this.props.commentId || null
+    form.querySelector(".comment-form-content").value = this.refs.textarea.value
+    form.submit();
+  }
+
   render() {
-    const type = this.props.reply ? "reply" : "comment"
+    const type = this.props.commentId ? "reply" : "comment"
 
     const wrapperStyle = {
       display: "flex",
@@ -30,12 +42,12 @@ class CommentField extends React.Component {
       <div className={type + "-field standard-border comment-spacing"}>
         <div style={wrapperStyle}>
           <h3 style={headerStyle} className="thin-primary">Leave a {type}</h3>
-          <textarea placeholder="Say something constructive..." style={textAreaStyle}></textarea>
-          <button className="btn btn-success square-borders" style={buttonStyle}>Send</button>
+          <textarea ref="textarea" placeholder="Say something constructive..." style={textAreaStyle}></textarea>
+          <button onClick={this.handleClick} className="btn btn-success square-borders" style={buttonStyle}>Send</button>
         </div>
       </div>
     )
   }
 }
 
-export default CommentField
+export default CommentField;

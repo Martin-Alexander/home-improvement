@@ -19,7 +19,9 @@ const addReplyFieldToComment = (replyButtonElement) => {
     const parentDivOfNewReplyField = document.createElement("div");
     replyButtonElement.insertAdjacentElement("afterend", parentDivOfNewReplyField);
 
-    ReactDOM.render(<CommentField reply={true}/>, parentDivOfNewReplyField);
+    const commentId = parentDivOfNewReplyField.parentNode.querySelector(".like").dataset.comment_id;
+
+    ReactDOM.render(<CommentField forms={hiddenCommentForms()} commentId={commentId}/>, parentDivOfNewReplyField);
   }
 }
 

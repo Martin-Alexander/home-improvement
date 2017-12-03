@@ -18,7 +18,7 @@ class Comment < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   validates_presence_of :project_id, :content
-  validates_length_of :content, minimum: 20
+  validates_length_of :content, minimum: 5
 
   validate :non_conflicting_parent_and_project
 
