@@ -2,3 +2,5 @@
   <%= render "project", project: @project %>
   <div id="comment-section" data-comment_data="<%= @comment_json %>"></div>
 </div>
+
+<%= javascript_pack_tag "comments" %>
