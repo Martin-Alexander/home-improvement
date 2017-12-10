@@ -1,9 +1,21 @@
 import React from "react";
 
 import CommentFilter from "./CommentFilter";
+import Comment from "./Comment";
 
 export default class CommentSection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = JSON.parse(props.data);
+  }
+
   render() {
+    const comments = this.state.comments.map((comment) => {
+      return(
+        <Comment key={comment.id} content={comment.content} />
+      );
+    });
+
     return(
       <div>
         <h2 className="bold-primary">Comments</h2>
@@ -12,6 +24,7 @@ export default class CommentSection extends React.Component {
           <CommentFilter type="Top" />
           <CommentFilter type="Active" />
         </div>
+        <div id="comment-list">{comments}</div>
       </div>
     );
   }
