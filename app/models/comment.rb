@@ -34,4 +34,19 @@ class Comment < ApplicationRecord
   def is_top_level
     parent.nil?
   end
+
+  # Returns a json representation of a comment necessary for react generation of 
+  # the comment section
+  def as_json_for_react
+    comment_json = as_json(only: [:user_id, :content, :id])
+    comment_json[:likes] = likes.count
+    comment_json[:user_full_name] = user.full_name
+    comment_json[:replies] = replies.each_with_object([]) do |reply, replies_array|
+      reply_json = reply.as_json(only: [:user_id, :content, :id])
+      reply_json[:user_full_name] = reply.user.full_name
+      replies_array << reply_json
+    end
+
+    comment_json
+  end  
 end
