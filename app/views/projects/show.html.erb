@@ -1,8 +1,4 @@
 <div>
   <%= render "project", project: @project %>
-  <%= render "comments/comment_section" %>
+  <div id="comment-section" data-comment_data="<%= @comment_json %>"></div>
 </div>
-
-<%= render "projects/hidden_forms" %>
-
-<%= javascript_pack_tag "likes" %>
