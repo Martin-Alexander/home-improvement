@@ -8,7 +8,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @comments = policy_scope(Comment).where(project: @project, parent: nil).order(created_at: :desc)
+    # @comments = policy_scope(Comment).where(project: @project, parent: nil).order(created_at: :desc)
+    @comment_json = @project.as_json_for_react
   end
 
   def new
