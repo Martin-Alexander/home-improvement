@@ -1,13 +1,11 @@
-#comment-section {
-  &> div { &> span {
-    font-size: 16px;
-    text-decoration: underline;
-    cursor: pointer;
+.comment-filter {
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
 
-    &:hover {
-      color: #ED5353;
-    }
-  }}
+  &:hover {
+    color: #ED5353;
+  }
 }
 
 #comment-filters {
