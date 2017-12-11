@@ -12,7 +12,12 @@ export default class CommentSection extends React.Component {
   render() {
     const comments = this.state.comments.map((comment) => {
       return(
-        <Comment key={comment.id} content={comment.content} />
+        <Comment 
+          key={comment.id}
+          content={comment.content}
+          user_full_name={comment.user_full_name}
+          likes={comment.likes}
+        />
       );
     });
 
