@@ -10,6 +10,7 @@ export default class Reply extends React.Component {
         user_full_name={this.props.user_full_name}
         likes={this.props.likes}
         type="reply"
+        is_liked={this.props.is_liked}
       />
     );
   }

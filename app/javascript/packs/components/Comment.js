@@ -12,6 +12,7 @@ export default class Comment extends React.Component {
           content={reply.content}
           user_full_name={reply.user_full_name}
           likes={reply.likes}
+          is_liked={reply.is_liked}
         />
       );
     });
@@ -23,6 +24,7 @@ export default class Comment extends React.Component {
           user_full_name={this.props.user_full_name}
           likes={this.props.likes}
           type="comment"
+          is_liked={this.props.is_liked}
         />
         {replies}
       </div>
