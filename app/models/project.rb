@@ -49,11 +49,11 @@ class Project < ApplicationRecord
 
   # Returns a json representation of a project necessary for react generation of
   # the comment section
-  def as_json_for_react
+  def as_json_for_react(current_user)
     project_hash = as_json(only: :id)
     project_hash[:comments] = Comment.includes(:user, :likes, replies: :user)
       .where(project_id: id, comment_id: nil)
-      .each_with_object([]) { |comment, comments_array| comments_array << comment.as_json_for_react }
+      .each_with_object([]) { |comment, comments_array| comments_array << comment.as_json_for_react(current_user) }
 
     project_hash
   end
