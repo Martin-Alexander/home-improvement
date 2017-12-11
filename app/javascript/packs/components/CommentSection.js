@@ -17,6 +17,7 @@ export default class CommentSection extends React.Component {
           content={comment.content}
           user_full_name={comment.user_full_name}
           likes={comment.likes}
+          replies={comment.replies}
         />
       );
     });
