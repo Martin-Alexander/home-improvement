@@ -1,5 +1,7 @@
 import React from "react";
 
+import ThumbsUpIcon from "./ThumbsUpIcon";
+
 export default class CommentContentBase extends React.Component {
   render() {
     return(
@@ -8,7 +10,7 @@ export default class CommentContentBase extends React.Component {
           <div className="lesser-underline">{this.props.user_full_name}</div>
           <div className="likes">
             <span>{this.props.likes}</span>
-            <i className="fa fa-thumbs-o-up" aria-hidden="true" style={(this.props.is_liked ? {fontSize: "18px"} : {})}></i>
+            <ThumbsUpIcon is_liked={this.props.is_liked}/>
           </div>
         </div>
         <div>{this.props.content}</div>
