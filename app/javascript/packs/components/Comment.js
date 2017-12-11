@@ -25,7 +25,7 @@ export default class Comment extends React.Component {
           likes={this.props.likes}
           type="comment"
           is_liked={this.props.is_liked}
-        />
+        />        
         {replies}
       </div>
     );

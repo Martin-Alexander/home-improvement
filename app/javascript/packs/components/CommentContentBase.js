@@ -1,6 +1,7 @@
 import React from "react";
 
 import ThumbsUpIcon from "./ThumbsUpIcon";
+import CommentActions from "./CommentActions";
 
 export default class CommentContentBase extends React.Component {
   render() {
@@ -14,6 +15,7 @@ export default class CommentContentBase extends React.Component {
           </div>
         </div>
         <div>{this.props.content}</div>
+        <CommentActions />
       </div>
     );
   }
