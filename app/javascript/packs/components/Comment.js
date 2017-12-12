@@ -23,7 +23,7 @@ export default class Comment extends React.Component {
           comment={this.props.comment}
           user_id={this.props.user_id}
           commentFunctions={this.props.commentFunctions}
-        />        
+        />
         {replies}
       </div>
     );
