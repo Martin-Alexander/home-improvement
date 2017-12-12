@@ -11,6 +11,7 @@ export default class Comment extends React.Component {
           key={reply.id}
           comment={reply}
           user_id={this.props.user_id}
+          commentFunctions={this.props.commentFunctions}
         />
       );
     });
@@ -21,6 +22,7 @@ export default class Comment extends React.Component {
           type="comment"
           comment={this.props.comment}
           user_id={this.props.user_id}
+          commentFunctions={this.props.commentFunctions}
         />        
         {replies}
       </div>

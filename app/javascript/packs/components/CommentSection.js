@@ -24,13 +24,39 @@ export default class CommentSection extends React.Component {
     this.setState(this.state);
   }
 
+  updateLike() {
+
+  }
+
+  openCommentField() {
+
+  }
+
+  createComment() {
+
+  }
+
+  deleteComment() {
+
+  }
+
   render() {
+    const self = this;
+
+    const commentFunctions = {
+      updateLike: this.updateLike.bind(self),
+      openCommentField: this.openCommentField.bind(self),
+      createComment: this.createComment.bind(self),
+      deleteComment: this.deleteComment.bind(self)
+    }
+
     const comments = this.state.comments.map((comment) => {
       return(
         <Comment 
           key={comment.id}
           comment={comment}
           user_id={this.state.user_id}
+          commentFunctions={commentFunctions}
         />
       );
     });
