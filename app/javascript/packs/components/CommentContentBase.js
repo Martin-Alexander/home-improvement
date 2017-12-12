@@ -21,6 +21,8 @@ export default class CommentContentBase extends React.Component {
           type={this.props.type}
           comment_user_id={comment.user_id}
           user_id={this.props.user_id}
+          replyFunction={this.props.commentFunctions.createComment}
+          deleteFunction={this.props.commentFunctions.deleteComment}
         />
       </div>
     );

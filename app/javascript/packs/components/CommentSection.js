@@ -6,7 +6,17 @@ import Comment from "./Comment";
 export default class CommentSection extends React.Component {
   constructor(props) {
     super(props);
-    this.state = JSON.parse(props.data);
+    this.state = this.setDefaultReplyFieldState(JSON.parse(props.data));
+
+    console.log(this.state);
+  }
+
+  setDefaultReplyFieldState(protoState) {
+    protoState.comments.forEach((comment) => {
+      comment.replyField = false;
+    });
+
+    return protoState;
   }
 
   sortCommentsByFilter(filter) {
@@ -28,7 +38,7 @@ export default class CommentSection extends React.Component {
 
   }
 
-  openCommentField() {
+  openReplyField() {
 
   }
 
@@ -45,7 +55,7 @@ export default class CommentSection extends React.Component {
 
     const commentFunctions = {
       updateLike: this.updateLike.bind(self),
-      openCommentField: this.openCommentField.bind(self),
+      openReplyField: this.openReplyField.bind(self),
       createComment: this.createComment.bind(self),
       deleteComment: this.deleteComment.bind(self)
     }
