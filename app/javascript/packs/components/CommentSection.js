@@ -42,6 +42,8 @@ export default class CommentSection extends React.Component {
     this.state.comments.forEach((comment) => {
       if (comment.id === commentId) {
         comment.replyField = !comment.replyField;
+      } else {
+        comment.replyField = false;
       }
     });
 
