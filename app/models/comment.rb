@@ -38,12 +38,12 @@ class Comment < ApplicationRecord
   # Returns a json representation of a comment necessary for react generation of 
   # the comment section
   def as_json_for_react(current_user)
-    comment_json = as_json(only: [:user_id, :content, :id])
+    comment_json = as_json(only: [:user_id, :content, :id, :created_at])
     comment_json[:is_liked] = is_liked_by(current_user)
     comment_json[:likes] = likes.count
     comment_json[:user_full_name] = user.full_name
     comment_json[:replies] = replies.each_with_object([]) do |reply, replies_array|
-      reply_json = reply.as_json(only: [:user_id, :content, :id])
+      reply_json = reply.as_json(only: [:user_id, :content, :id, :created_at])
       reply_json[:is_liked] = reply.is_liked_by(current_user)
       reply_json[:likes] = reply.likes.count
       reply_json[:user_full_name] = reply.user.full_name
