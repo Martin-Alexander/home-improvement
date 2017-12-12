@@ -17,7 +17,7 @@ export default class CommentSection extends React.Component {
         case "Top":
           return b.likes - a.likes;
         case "New":
-          return 0;
+          return Date.parse(a.created_at) - Date.parse(b.created_at);
       }
     });
 
