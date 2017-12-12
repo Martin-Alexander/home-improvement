@@ -51,6 +51,7 @@ class Project < ApplicationRecord
   # the comment section
   def as_json_for_react(current_user)
     project_hash = as_json(only: :id)
+    project_hash[:user_id] = current_user.id
     project_hash[:comments] = Comment.includes(:user, :likes, replies: [:user, :likes])
       .where(project_id: id, comment_id: nil)
       .each_with_object([]) { |comment, comments_array| comments_array << comment.as_json_for_react(current_user) }
