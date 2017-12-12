@@ -8,7 +8,6 @@ export default class CommentField extends React.Component {
   }
 
   handleClick() {
-    console.log("cligg :DDD")
   }
 
   render() {

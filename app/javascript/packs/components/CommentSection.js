@@ -38,8 +38,14 @@ export default class CommentSection extends React.Component {
 
   }
 
-  openReplyField() {
+  openReplyField(commentId) {
+    this.state.comments.forEach((comment) => {
+      if (comment.id === commentId) {
+        comment.replyField = !comment.replyField;
+      }
+    });
 
+    this.setState(this.state);
   }
 
   createComment() {
