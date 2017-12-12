@@ -14,11 +14,9 @@ export default class CommentSection extends React.Component {
       return(
         <Comment 
           key={comment.id}
-          content={comment.content}
-          user_full_name={comment.user_full_name}
-          likes={comment.likes}
-          replies={comment.replies}
-          is_liked={comment.is_liked}
+          comment={comment}
+          user_id={this.props.user_id}
+          comment_id={this.props.id}
         />
       );
     });
