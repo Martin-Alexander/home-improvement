@@ -8,7 +8,7 @@ export default class Reply extends React.Component {
       <CommentContentBase 
         type="reply"
         comment={this.props.comment}
-        uesr_id={this.props.user_id}
+        user_id={this.props.user_id}
       />
     );
   }

@@ -17,7 +17,11 @@ export default class CommentContentBase extends React.Component {
           </div>
         </div>
         <div>{comment.content}</div>
-        <CommentActions uesr_id={this.props.user_id}/>
+        <CommentActions 
+          type={this.props.type}
+          comment_user_id={comment.user_id}
+          user_id={this.props.user_id}
+        />
       </div>
     );
   }

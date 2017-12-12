@@ -10,7 +10,7 @@ export default class Comment extends React.Component {
         <Reply 
           key={reply.id}
           comment={reply}
-          uesr_id={this.props.user_id}
+          user_id={this.props.user_id}
         />
       );
     });
@@ -20,7 +20,7 @@ export default class Comment extends React.Component {
         <CommentContentBase 
           type="comment"
           comment={this.props.comment}
-          uesr_id={this.props.user_id}
+          user_id={this.props.user_id}
         />        
         {replies}
       </div>
