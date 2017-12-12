@@ -3,7 +3,7 @@ import React from "react";
 export default class CommentActions extends React.Component {
   render() {
     const actions = {}
-    if (this.props.type === "comment") {
+    if (this.props.type === "comment" && this.props.user_id) {
       actions.replyButton = <div className="reply-button lesser-underline bold-clickable">Reply</div>;
     }
 

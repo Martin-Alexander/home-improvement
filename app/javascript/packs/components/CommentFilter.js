@@ -2,7 +2,7 @@ import React from "react";
 
 export default class CommentFilter extends React.Component {
   clickHandler() {
-    console.log(this.props.type);
+    this.props.filerFunction(this.props.type);
   }
 
   render() {
