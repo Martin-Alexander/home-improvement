@@ -17,7 +17,7 @@ export default class CommentField extends React.Component {
   }
 
   render() {
-    const type = this.props.commentId ? "reply" : "comment"
+    const type = this.props.comment_id ? "reply" : "comment"
 
     const wrapperStyle = {
       display: "flex",
