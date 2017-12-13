@@ -17,6 +17,8 @@ export default class CommentSection extends React.Component {
     console.log(this.state);
   }
 
+  // Sets replyField state (i.e., whether or not is has a reply field oppenned
+  // underneath it) to all comments
   setDefaultReplyFieldState(protoState) {
     protoState.comments.forEach((comment) => {
       comment.replyField = false;
@@ -25,14 +27,15 @@ export default class CommentSection extends React.Component {
     return protoState;
   }
 
+  // Reorders comments according to the "new", "top", or "active" filter
   sortCommentsByFilter(filter) {
     this.state.comments.sort((a, b) => {
       switch (filter) {
-        case "Active":
+        case "Active":                                   // Most replies
           return b.replies.length - a.replies.length;
-        case "Top":
+        case "Top":                                      // Most likes
           return b.likes - a.likes;
-        case "New":
+        case "New":                                      // Most recently posted
           return Date.parse(b.created_at) - Date.parse(a.created_at);
       }
     });
@@ -40,6 +43,7 @@ export default class CommentSection extends React.Component {
     this.setState(this.state);
   }
 
+  // Handles liking and de-liking for any comment
   updateLike(comment_id, commentWasLiked) {
     const fetchOptions = {};
 
@@ -68,6 +72,7 @@ export default class CommentSection extends React.Component {
     });
   }
 
+  // Toggles a reply field and closes all others
   openReplyField(comment_id) {
     this.state.comments.forEach((comment) => {
       if (comment.id === comment_id) {
@@ -80,6 +85,8 @@ export default class CommentSection extends React.Component {
     this.setState(this.state);
   }
 
+  // Creation of a new comment or reply. Passing null as a comment_id will create
+  // a top-level comment otherwise it will create a reply under that comment
   createComment(comment_id, content) {
     const body = {
       comment: {
@@ -112,6 +119,7 @@ export default class CommentSection extends React.Component {
     });
   }
 
+  // Deletes a given comment
   deleteComment() {
 
   }
@@ -149,6 +157,7 @@ export default class CommentSection extends React.Component {
     );
   }
 
+  // Runs through every comment and reply and applies a given function
   eachCommentAndReply(commentFunction) {
     this.state.comments.forEach((comment) => {
       commentFunction(comment);
@@ -156,6 +165,7 @@ export default class CommentSection extends React.Component {
     });
   }
 
+  // Finds a comment by id and updates state to reflect new liked status
   findAndUpdateLikes(comment_id, commentWasLiked) {
     this.eachCommentAndReply((comment) => {
       if (comment.id === comment_id) {
