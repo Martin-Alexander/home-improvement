@@ -35,7 +35,7 @@ class Comment < ApplicationRecord
     parent.nil?
   end
 
-  # Improves querry efficiency
+  # Improves query efficiency
   def count(likes)
     counter = 0
     likes.each do |like|
