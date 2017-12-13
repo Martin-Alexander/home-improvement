@@ -1,4 +1,0 @@
-<div id="comment-<%= comment.id %>" class="project-comment standard-border comment-spacing">
-  <%= render "comments/comment_content", comment: comment %>
-  <%= render partial: "comments/reply", collection: comment.replies.order(created_at: :asc) %>
-</div>

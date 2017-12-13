@@ -1,9 +1,0 @@
-<% if comment.is_top_level && user_signed_in? %>
-  <div class="reply-button lesser-underline bold-clickable">Reply</div>
-<% end %>
-<%# if policy(comment).edit? %>
-  <!-- <div class="lesser-underline bold-clickable">Edit</div> -->
-<%# end %>
-<% if policy(comment).destroy? %>
-  <div class="delete-button lesser-underline bold-clickable">Delete</div>
-<% end %>
