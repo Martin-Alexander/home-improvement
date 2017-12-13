@@ -57,9 +57,11 @@ export default class CommentSection extends React.Component {
 
   createComment(comment_id, content) {
     const body = {
-      project_id: this.state.id,
-      comment_id: comment_id,
-      content: content
+      comment: {
+        project_id: this.state.id,
+        comment_id: comment_id,
+        content: content
+      }
     }
 
     fetch("/comments", { 
@@ -68,6 +70,19 @@ export default class CommentSection extends React.Component {
       body: JSON.stringify(body),
       credentials: 'same-origin'
     })
+    .then(response => response.json())
+    .then((data) => {
+      if (data.status === "FAILURE") { return false; }
+      if (data.comment.comment_id) {
+        this.state.comments.forEach((comment) => {
+          if (comment.id === comment_id) {
+            comment.replies.unshift(data.comment);
+          }
+        });
+      }
+      this.state.comments.forEach(comment => comment.replyField = false)
+      this.setState(this.state);
+    });
   }
 
   deleteComment() {
@@ -75,13 +90,11 @@ export default class CommentSection extends React.Component {
   }
 
   render() {
-    const self = this;
-
     const commentFunctions = {
-      updateLike: this.updateLike.bind(self),
-      openReplyField: this.openReplyField.bind(self),
-      createComment: this.createComment.bind(self),
-      deleteComment: this.deleteComment.bind(self)
+      updateLike: this.updateLike.bind(this),
+      openReplyField: this.openReplyField.bind(this),
+      createComment: this.createComment.bind(this),
+      deleteComment: this.deleteComment.bind(this)
     }
 
     const comments = this.state.comments.map((comment) => {
