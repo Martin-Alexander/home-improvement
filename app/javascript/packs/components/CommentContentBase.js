@@ -8,7 +8,10 @@ export default class CommentContentBase extends React.Component {
   render() {
     const comment = this.props.comment;
     if (this.props.comment.replyField) {
-      var commentField = <CommentField createComment={this.props.commentFunctions.createComment} />
+      var commentField = <CommentField 
+        comment_id={comment.id}
+        createComment={this.props.commentFunctions.createComment} 
+      />
     } else {
       var commentField = null;
     }

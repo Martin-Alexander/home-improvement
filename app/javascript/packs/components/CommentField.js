@@ -8,7 +8,7 @@ export default class CommentField extends React.Component {
   }
 
   handleClick() {
-    this.props.createComment();
+    this.props.createComment(this.props.comment_id, this.state.content);
   }
 
   handleChange(event) {

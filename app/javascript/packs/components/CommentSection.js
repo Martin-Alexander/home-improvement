@@ -9,7 +9,7 @@ export default class CommentSection extends React.Component {
     this.state = this.setDefaultReplyFieldState(JSON.parse(props.data));
     this.AJAX_Headers = {
       'X-Requested-With': 'XMLHttpRequest',
-      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content');,
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     }
@@ -55,12 +55,14 @@ export default class CommentSection extends React.Component {
     this.setState(this.state);
   }
 
-  createComment() {
+  createComment(comment_id, content) {
     const body = {
-      
+      project_id: this.state.id,
+      comment_id: comment_id,
+      content: content
     }
 
-    fetch("/likes", { 
+    fetch("/comments", { 
       method: 'POST',
       headers: this.AJAX_Headers,
       body: JSON.stringify(body),
