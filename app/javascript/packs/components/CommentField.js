@@ -4,10 +4,16 @@ import ReactDOM from "react-dom";
 export default class CommentField extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {content: ""};
   }
 
   handleClick() {
+    this.props.createComment();
+  }
+
+  handleChange(event) {
+    this.state.content = event.currentTarget.value;
+    this.setState(this.state);
   }
 
   render() {
@@ -38,8 +44,8 @@ export default class CommentField extends React.Component {
       <div className={type + "-field standard-border comment-spacing"}>
         <div style={wrapperStyle}>
           <h3 style={headerStyle} className="thin-primary">Leave a {type}</h3>
-          <textarea ref="textarea" placeholder="Say something constructive..." style={textAreaStyle}></textarea>
-          <button onClick={this.handleClick} className="btn btn-success square-borders" style={buttonStyle}>Send</button>
+          <textarea onChange={this.handleChange.bind(this)}placeholder="Say something constructive..." style={textAreaStyle}></textarea>
+          <button onClick={this.handleClick.bind(this)} className="btn btn-success square-borders" style={buttonStyle}>Send</button>
         </div>
       </div>
     )

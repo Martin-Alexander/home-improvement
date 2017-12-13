@@ -34,6 +34,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    byebug
     @comment = Comment.new(comment_params)
     @comment.user = current_user
 

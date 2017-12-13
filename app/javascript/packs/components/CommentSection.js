@@ -7,7 +7,12 @@ export default class CommentSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.setDefaultReplyFieldState(JSON.parse(props.data));
-
+    this.AJAX_Headers = {
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content');,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
     console.log(this.state);
   }
 
@@ -51,7 +56,16 @@ export default class CommentSection extends React.Component {
   }
 
   createComment() {
+    const body = {
+      
+    }
 
+    fetch("/likes", { 
+      method: 'POST',
+      headers: this.AJAX_Headers,
+      body: JSON.stringify(body),
+      credentials: 'same-origin'
+    })
   }
 
   deleteComment() {

@@ -7,7 +7,11 @@ import CommentField from "./CommentField";
 export default class CommentContentBase extends React.Component {
   render() {
     const comment = this.props.comment;
-    const commentField = this.props.comment.replyField ? <CommentField /> : null
+    if (this.props.comment.replyField) {
+      var commentField = <CommentField createComment={this.props.commentFunctions.createComment} />
+    } else {
+      var commentField = null;
+    }
 
     return(
       <div className={`project-${this.props.type} standard-border comment-spacing`}>
@@ -24,7 +28,6 @@ export default class CommentContentBase extends React.Component {
           comment_user_id={comment.user_id}
           user_id={this.props.user_id}
           comment_id={comment.id}
-          createComment={this.props.commentFunctions.createComment}
           deleteComment={this.props.commentFunctions.deleteComment}
           openReplyField={this.props.commentFunctions.openReplyField}
         />
