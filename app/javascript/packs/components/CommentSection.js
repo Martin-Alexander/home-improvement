@@ -40,50 +40,32 @@ export default class CommentSection extends React.Component {
     this.setState(this.state);
   }
 
-  updateLike(comment_id, newValue) {
-    const updateState = function(newValue) {
-      this.state.comments.forEach((comment) => {
-        if (comment.id === comment_id) {
-          comment.is_liked = newValue;
-        }
-        comment.replies.forEach((reply) => {
-          if (reply.id === comment_id) {
-            reply.is_liked = newValue;
-          }
-        });
-      });
-      
-      this.setState(this.state);
-    }
+  updateLike(comment_id, commentWasLiked) {
+    const fetchOptions = {};
 
-    if (newValue) {
-      fetch("/likes", {
-        method: "POST",
-        headers: this.AJAX_Headers,
-        body: JSON.stringify({
-          comment_id: comment_id
-        }),
-        credentials: "same-origin"
-      })
-      .then(response => response.json())
-      .then((data) => {
-        if (data.status === "FAILURE") { return false; }
-        updateState.call(this, newValue);
-      })
+    if (commentWasLiked) {
+      fetchOptions.url = "/likes";
+      fetchOptions.method = "POST"
     } else {
-      fetch(`/likes/${comment_id}`, {
-        method: "DELETE",
-        headers: this.AJAX_Headers,
-        credentials: "same-origin"
-      })
-      .then(response => response.json())
-      .then((data) => {
-        if (data.status === "FAILURE") { return false; }
-        updateState.call(this, newValue);
-      })      
+      fetchOptions.url = `/likes/${comment_id}`;
+      fetchOptions.method = "DELETE";
     }
 
-    this.setState(this.state);
+    fetch(fetchOptions.url, {
+      method: fetchOptions.method,
+      headers: this.AJAX_Headers,
+      body: JSON.stringify({
+        comment_id: comment_id
+      }),
+      credentials: "same-origin"
+    })
+    .then(response => response.json())
+    .then((data) => {
+      if (data.status === "FAILURE") { return false; }
+      this.findAndUpdateLikes(comment_id, commentWasLiked);
+
+      this.setState(this.state);
+    });
   }
 
   openReplyField(comment_id) {
@@ -166,4 +148,25 @@ export default class CommentSection extends React.Component {
       </div>
     );
   }
+
+  eachCommentAndReply(commentFunction) {
+    this.state.comments.forEach((comment) => {
+      commentFunction(comment);
+      comment.replies.forEach(reply => commentFunction(reply));
+    });
+  }
+
+  findAndUpdateLikes(comment_id, commentWasLiked) {
+    this.eachCommentAndReply((comment) => {
+      if (comment.id === comment_id) {
+        if (commentWasLiked) {
+          comment.is_liked = true;
+          comment.likes += 1;
+        } else {
+          comment.is_liked = false;
+          comment.likes -= 1;            
+        }
+      }
+    });
+  }  
 }
