@@ -2,6 +2,7 @@ import React from "react";
 
 import CommentFilter from "./CommentFilter";
 import Comment from "./Comment";
+import CommentField  from "./CommentField";
 
 export default class CommentSection extends React.Component {
   constructor(props) {
@@ -79,6 +80,8 @@ export default class CommentSection extends React.Component {
             comment.replies.unshift(data.comment);
           }
         });
+      } else {
+        this.state.comments.unshift(data.comment);
       }
       this.state.comments.forEach(comment => comment.replyField = false)
       this.setState(this.state);
@@ -116,6 +119,7 @@ export default class CommentSection extends React.Component {
           <CommentFilter filerFunction={this.sortCommentsByFilter.bind(this)} type="Top" />
           <CommentFilter filerFunction={this.sortCommentsByFilter.bind(this)} type="Active" />
         </div>
+        <CommentField createComment={this.createComment.bind(this)}/>
         <div id="comment-list">{comments}</div>
       </div>
     );
