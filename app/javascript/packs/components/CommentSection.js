@@ -40,13 +40,55 @@ export default class CommentSection extends React.Component {
     this.setState(this.state);
   }
 
-  updateLike() {
+  updateLike(comment_id, newValue) {
+    const updateState = function(newValue) {
+      this.state.comments.forEach((comment) => {
+        if (comment.id === comment_id) {
+          comment.is_liked = newValue;
+        }
+        comment.replies.forEach((reply) => {
+          if (reply.id === comment_id) {
+            reply.is_liked = newValue;
+          }
+        });
+      });
+      
+      this.setState(this.state);
+    }
 
+    if (newValue) {
+      fetch("/likes", {
+        method: "POST",
+        headers: this.AJAX_Headers,
+        body: JSON.stringify({
+          comment_id: comment_id
+        }),
+        credentials: "same-origin"
+      })
+      .then(response => response.json())
+      .then((data) => {
+        if (data.status === "FAILURE") { return false; }
+        updateState.call(this, newValue);
+      })
+    } else {
+      fetch(`/likes/${comment_id}`, {
+        method: "DELETE",
+        headers: this.AJAX_Headers,
+        credentials: "same-origin"
+      })
+      .then(response => response.json())
+      .then((data) => {
+        if (data.status === "FAILURE") { return false; }
+        updateState.call(this, newValue);
+      })      
+    }
+
+    this.setState(this.state);
   }
 
-  openReplyField(commentId) {
+  openReplyField(comment_id) {
     this.state.comments.forEach((comment) => {
-      if (comment.id === commentId) {
+      if (comment.id === comment_id) {
         comment.replyField = !comment.replyField;
       } else {
         comment.replyField = false;

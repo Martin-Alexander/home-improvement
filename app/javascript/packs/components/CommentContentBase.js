@@ -22,7 +22,11 @@ export default class CommentContentBase extends React.Component {
           <div className="lesser-underline">{comment.user_full_name}</div>
           <div className="likes">
             <span>{comment.likes}</span>
-            <ThumbsUpIcon is_liked={comment.is_liked}/>
+            <ThumbsUpIcon 
+              updateLike={this.props.commentFunctions.updateLike}
+              is_liked={comment.is_liked}
+              comment_id={comment.id}
+            />
           </div>
         </div>
         {comment.content}
