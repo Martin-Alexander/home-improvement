@@ -6,7 +6,7 @@ export default class CommentActions extends React.Component {
   }
 
   deleteClick() {
-
+    this.props.deleteComment(this.props.comment_id);
   }
 
   render() {

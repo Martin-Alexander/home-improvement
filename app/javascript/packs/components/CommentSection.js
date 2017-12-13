@@ -120,8 +120,18 @@ export default class CommentSection extends React.Component {
   }
 
   // Deletes a given comment
-  deleteComment() {
-
+  deleteComment(comment_id) {
+    fetch(`/comments/${comment_id}`, { 
+      method: 'DELETE',
+      headers: this.AJAX_Headers,
+      credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then((data) => {
+      if (data.status === "FAILURE") { return false; }
+      this.findAndDeleteComment(comment_id);
+      this.setState(this.state);
+    });
   }
 
   render() {
@@ -145,7 +155,7 @@ export default class CommentSection extends React.Component {
 
     return(
       <div>
-        <h2 className="bold-primary">Comments</h2>
+        <h2 className="bold-primary">Comments ({this.totalNumberOfComments()})</h2>
         <div id="comment-filters">
           <CommentFilter filerFunction={this.sortCommentsByFilter.bind(this)} type="New" />
           <CommentFilter filerFunction={this.sortCommentsByFilter.bind(this)} type="Top" />
@@ -178,5 +188,29 @@ export default class CommentSection extends React.Component {
         }
       }
     });
-  }  
+  }
+
+  // Finds a comment/reply by id and deletes it from state
+  findAndDeleteComment(comment_id) {
+    this.state.comments.forEach((comment, index) => {
+      if (comment.id === comment_id) {
+        this.state.comments.splice(index, 1);
+      }
+
+      comment.replies.forEach((reply, index) => {
+        if (reply.id === comment_id) {
+          comment.replies.splice(index, 1);
+        }
+      });
+    });
+  }
+
+  // Returns the total number of comments and replies
+  totalNumberOfComments() {
+    let total = 0;
+    this.eachCommentAndReply(() => {
+      total += 1;
+    });
+    return total;
+  }
 }

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:update]
-  before_action :authorize_comment, only: [:update]
+  before_action :set_comment, only: [:update, :destroy]
+  before_action :authorize_comment, only: [:update, :destroy]
   skip_before_action :authenticate_user!, only: [:index]
 
   def create
@@ -23,9 +23,16 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:comment_id])
+    # @comment = Comment.find(params[:comment_id])
     authorize @comment
-    @comment.destroy
+
+    respond_to do |format|
+      if @comment.destroy
+        format.json { render json: {status: "OK"} }
+      else
+        format.json { render json: {status: "FAILURE"} }
+      end
+    end    
   end
 
   private
