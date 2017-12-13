@@ -35,27 +35,18 @@ class Comment < ApplicationRecord
     parent.nil?
   end
 
-  # Improves query efficiency
-  def count(likes)
-    counter = 0
-    likes.each do |like|
-      counter += 1
-    end
-    return counter
-  end
-
   # Returns a json representation of a comment necessary for react generation of 
   # the comment section
   def as_json_for_react(current_user)
     comment_json = as_json(only: [:comment_id, :user_id, :content, :id, :created_at])
     comment_json[:is_liked] = is_liked_by(current_user)
-    comment_json[:likes] = count(likes)
+    comment_json[:likes] = likes.length
     comment_json[:user_full_name] = user.full_name
     if is_top_level
       comment_json[:replies] = replies.each_with_object([]) do |reply, replies_array|
         reply_json = reply.as_json(only: [:comment_id, :user_id, :content, :id, :created_at])
         reply_json[:is_liked] = reply.is_liked_by(current_user)
-        reply_json[:likes] = count(reply.likes)
+        reply_json[:likes] = reply.likes.length
         reply_json[:user_full_name] = reply.user.full_name
         replies_array << reply_json
       end
