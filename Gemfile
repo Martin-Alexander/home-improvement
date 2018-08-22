@@ -67,4 +67,4 @@ gem "webpacker", "~> 3.0"
 gem "faker"
 gem "font-awesome-sass"
 gem "bootstrap-modal-rails"
-gem "kramdown"
+gem "kramdown"gem 'hello-world', path: 'hello-world'

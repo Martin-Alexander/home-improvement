@@ -77,7 +77,7 @@ Comment.create!({
   Comment.create!({
     user: User.all.sample,
     project: project,
-    content: rand > 0.5 ? Faker::Seinfeld.quote : Faker::HarryPotter.quote,
+    content: [Faker::Seinfeld.quote, Faker::HarryPotter.quote].sample,
     parent: parent
   })
 end
